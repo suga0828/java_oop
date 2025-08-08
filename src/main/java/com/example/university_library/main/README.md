@@ -47,14 +47,14 @@ java_oop/
 cd /ruta/a/university-library
 
 # Compilar el proyecto
-javac -d target/classes -sourcepath src/main/java src/main/java/com/example/java_oop/university_library/main/Main.java
+javac -d out $(find src/main/java -name "*.java")
 ```
 
 ### Ejecución
 
 ```bash
 # Desde el directorio del proyecto
-java -cp target/classes main.university_library.com.example.UniversityLibraryApp
+java -cp out com.example.university_library.main.UniversityLibraryApp
 ```
 
 ## Notas

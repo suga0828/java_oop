@@ -45,14 +45,14 @@ java_oop/
 cd /ruta/a/java_oop
 
 # Compilar el proyecto
-javac -d target/classes -sourcepath src/main/java src/main/java/com/example/java_oop/ips_management/main/IpsManagementApp.java
+javac -d out $(find src/main/java -name "*.java")
 ```
 
 ### Ejecución
 
 ```bash
 # Desde el directorio del proyecto
-java -cp target/classes main.ips_management.com.example.java_oop.IpsManagementApp
+java -cp out com.example.ips_management.main.IpsManagementApp
 ```
 
 ## Uso
