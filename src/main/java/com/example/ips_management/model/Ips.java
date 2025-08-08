@@ -8,11 +8,11 @@ import java.util.List;
  * que gestiona pacientes, doctores, centros médicos y citas.
  */
 public class Ips {
-    private final List<Patient> patients = new ArrayList<>();
-    private final List<Doctor> doctors = new ArrayList<>();
-    private final List<MedicalCenter> medicalCenters = new ArrayList<>();
-    private final List<Appointment> appointments = new ArrayList<>();
     private int nextAppointmentNumber = 1;
+    private List<Patient> patients = new ArrayList<>();
+    private List<Doctor> doctors = new ArrayList<>();
+    private List<MedicalCenter> medicalCenters = new ArrayList<>();
+    private List<Appointment> appointments = new ArrayList<>();
 
     /**
      * Genera el siguiente número de préstamo.
@@ -28,28 +28,28 @@ public class Ips {
      * @return Lista de todos los pacientes registrados.
      */
     public List<Patient> getPatients() {
-        return new ArrayList<>(patients);
+        return patients;
     }
 
     /**
      * @return Lista de todos los doctores registrados.
      */
     public List<Doctor> getDoctors() {
-        return new ArrayList<>(doctors);
+        return doctors;
     }
 
     /**
      * @return Lista de todos los centros médicos registrados.
      */
     public List<MedicalCenter> getMedicalCenters() {
-        return new ArrayList<>(medicalCenters);
+        return medicalCenters;
     }
 
     /**
      * @return Lista de todas las citas agendadas.
      */
     public List<Appointment> getAppointments() {
-        return new ArrayList<>(appointments);
+        return appointments;
     }
 
     /**

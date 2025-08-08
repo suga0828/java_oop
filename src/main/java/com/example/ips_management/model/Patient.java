@@ -66,11 +66,4 @@ public class Patient {
     public String getPhone() {
         return phone;
     }
-
-    /**
-     * @return Citas del paciente.
-     */
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
 }

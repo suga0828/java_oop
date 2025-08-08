@@ -22,13 +22,6 @@ public class MedicalCenter {
     }
 
     /**
-     * @return El código del centro médico.
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
      * @return La ciudad del centro médico.
      */
     public City getCity() {

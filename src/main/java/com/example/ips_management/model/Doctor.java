@@ -50,13 +50,6 @@ public class Doctor {
     }
 
     /**
-     * @return El código del médico.
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
      * @return El año en que el médico completó la especialización.
      */
     public int getSpecializationYear() {
