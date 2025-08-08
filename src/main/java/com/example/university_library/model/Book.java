@@ -44,6 +44,27 @@ public class Book {
     }
 
     /**
+     * @return El autor del libro.
+     */
+    public Author getAuthor() {
+        return author;
+    }
+
+    /**
+     * @return La edición del libro.
+     */
+    public String getEdition() {
+        return edition;
+    }
+
+    /**
+     * @return La editorial del libro.
+     */
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    /**
      * @return Verdadero si el libro está prestado, falso en caso contrario.
      */
     public boolean isBorrowed() {

@@ -125,7 +125,5 @@ public class IpsManagementApp {
                 foundAppointment.getMedicalCenter().getCity().getName(),
                 foundAppointment.getMedicalCenter().getAddress()
         ));
-
-
     }
 }

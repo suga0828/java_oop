@@ -17,4 +17,11 @@ public class Author {
         this.name = name;
         this.country = country;
     }
+
+    /**
+     * @return El nombre del autor.
+     */
+    public String getName() {
+        return name;
+    }
 }

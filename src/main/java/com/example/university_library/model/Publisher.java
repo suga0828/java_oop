@@ -20,4 +20,11 @@ public class Publisher {
         this.name = name;
         this.country = country;
     }
+
+    /**
+     * @return El nombre de la editorial.
+     */
+    public String getName() {
+        return name;
+    }
 }

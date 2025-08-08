@@ -22,6 +22,7 @@ classDiagram
         -name : String
         -country : Country
         +Author(name : String, country : Country)
+        +getName() : String
     }
 
     note for Publisher "Editorial"
@@ -30,6 +31,7 @@ classDiagram
         -name : String
         -country : Country
         +Publisher(code : String, name : String, country : Country)
+        +getName() : String
     }
 
     note for Book "Libro"
@@ -41,8 +43,11 @@ classDiagram
         -publisher : Publisher
         -borrowed : boolean
         +Book(ISBN : String, title : String, edition : String, author : Author, publisher : Publisher)
-        +String getISBN()
-        +String getTitle()
+        +getISBN() : String
+        +getTitle() : String
+        +getAuthor() : Author
+        +getEdition() : String
+        +getPublisher() : Publisher
         +isBorrowed() : boolean
         +setBorrowed(borrowed : boolean) : void
     }
