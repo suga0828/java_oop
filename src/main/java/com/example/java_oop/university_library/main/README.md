@@ -15,116 +15,23 @@ principios de la Programación Orientada a Objetos.
 ## Estructura del Proyecto
 
 ```
-university-library/
+java_oop/
 ├── src/
-│   └── main/
-│       └── java/
-│           └── co/
-│               └── edu/
-│                   └── umng/
-│                       └── poo/
-│                           └── university_library/
-│                               ├── model/    # Clases del modelo de dominio
-│                               └── main/     # Clase principal de la aplicación
+│   └── com/
+│       └── example/
+│           └── java_oop/
+│               └── university_library/
+│                   ├── model/       # Clases del modelo de dominio
+│                   ├── Country.java
+│                   ├── Author.java
+│                   ├── Publisher.java
+│                   ├── Book.java
+│                   ├── Student.java
+│                   ├── Loan.java
+│                   └── Library.java
+│                   └── main/        # Clase principal de la aplicación
+│                       └── UniversityLibraryApp.java
 └── README.md
-```
-
-## Diagrama de Clases
-
-```mermaid
-classDiagram
-    class Country {
-        -code: String
-        -name: String
-        +Country(code: String, name: String)
-        +getCode() String
-        +getName() String
-    }
-
-    class Author {
-        -name: String
-        -country: Country
-        +Author(name: String, country: Country)
-        +getName() String
-        +getCountry() Country
-    }
-
-    class Publisher {
-        -code: String
-        -name: String
-        -country: Country
-        +Publisher(code: String, name: String, country: Country)
-        +getCode() String
-        +getName() String
-        +getCountry() Country
-    }
-
-    class Book {
-        -ISBN: String
-        -title: String
-        -edition: String
-        -author: Author
-        -publisher: Publisher
-        -borrowed: boolean
-        +Book(ISBN: String, title: String, edition: String, author: Author, publisher: Publisher)
-        +getISBN() String
-        +getTitle() String
-        +getEdition() String
-        +getAuthor() Author
-        +getPublisher() Publisher
-        +isBorrowed() boolean
-        +setBorrowed(borrowed: boolean) void
-    }
-
-    class Student {
-        -id: String
-        -name: String
-        -program: String
-        +Student(id: String, name: String, program: String)
-        +getId() String
-        +getName() String
-        +getProgram() String
-    }
-
-    class Loan {
-        -number: String
-        -loanDate: Date
-        -returnDate: Date
-        -student: Student
-        -book: Book
-        +Loan(number: String, loanDate: Date, returnDate: Date, student: Student, book: Book)
-        +getNumber() String
-        +getLoanDate() Date
-        +getReturnDate() Date
-        +getStudent() Student
-        +getBook() Book
-    }
-
-    class Library {
-        -nextLoanNumber: int
-        -books: Book[]
-        -loans: Loan[]
-        +addBook(book: Book) void
-        +findBook(ISBN: String) Book
-        +getNextLoanNumber() String
-        +log(message: String) void
-        +getBooks() Book[]
-        +getLoans() Loan[]
-    }
-
-    class LibraryApp {
-        +main(args: String[]) void
-    }
-
-    Author "1" -- "1" Country : tiene
-    Publisher "1" -- "1" Country : tiene
-    Book "*" -- "1" Author : tiene
-    Book "*" -- "1" Publisher : tiene
-    Loan "*" -- "1" Book : referencia
-    Loan "*" -- "1" Student : referencia
-    Library "1" -- "*" Book : contiene
-    Library "1" -- "*" Loan : registra
-    LibraryApp --|> Library : extiende
 ```
 
 ## Compilación y Ejecución

@@ -49,7 +49,7 @@ public class Library {
      * @param ISBN ISBN a buscar.
      * @return El libro con el ISBN dado, o null si no se encuentra.
      */
-    public Book findBook(String ISBN) {
+    public Book findBookByISBN(String ISBN) {
         for (Book book : books) {
             if (book.getISBN().equals(ISBN)) {
                 return book;
