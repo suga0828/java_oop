@@ -1,4 +1,4 @@
-package com.example.java_oop.university_library.model;
+package com.example.university_library.model;
 
 import java.util.Date;
 

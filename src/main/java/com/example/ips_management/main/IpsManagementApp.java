@@ -1,6 +1,6 @@
-package com.example.java_oop.ips_management.main;
+package com.example.ips_management.main;
 
-import com.example.java_oop.ips_management.model.*;
+import com.example.ips_management.model.*;
 
 import java.util.Date;
 

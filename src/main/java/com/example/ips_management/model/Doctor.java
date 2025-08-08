@@ -1,4 +1,4 @@
-package com.example.java_oop.ips_management.model;
+package com.example.ips_management.model;
 
 /**
  * Representa un médico en el sistema de proveedores de atención médica.

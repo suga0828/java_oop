@@ -19,17 +19,16 @@ java_oop/
 ├── src/
 │   └── com/
 │       └── example/
-│           └── java_oop/
-│               └── ips_management/
-│                   ├── model/       # Clases del modelo de dominio
-│                   │   ├── Appointment.java
-│                   │   ├── City.java
-│                   │   ├── Doctor.java
-│                   │   ├── Ips.java
-│                   │   ├── MedicalCenter.java
-│                   │   └── Patient.java
-│                   └── main/        # Clase principal de la aplicación
-│                       └── IpsManagementApp.java
+│           └── ips_management/
+│               ├── model/       # Clases del modelo de dominio
+│               │   ├── Appointment.java
+│               │   ├── City.java
+│               │   ├── Doctor.java
+│               │   ├── Ips.java
+│               │   ├── MedicalCenter.java
+│               │   └── Patient.java
+│               └── main/        # Clase principal de la aplicación
+│                   └── IpsManagementApp.java
 └── README.md
 ```
 

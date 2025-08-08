@@ -1,4 +1,4 @@
-package com.example.java_oop.ips_management.model;
+package com.example.ips_management.model;
 
 import java.util.ArrayList;
 import java.util.List;

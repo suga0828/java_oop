@@ -1,4 +1,4 @@
-package com.example.java_oop.ips_management.model;
+package com.example.ips_management.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

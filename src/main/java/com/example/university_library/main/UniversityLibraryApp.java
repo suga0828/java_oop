@@ -1,6 +1,6 @@
-package com.example.java_oop.university_library.main;
+package com.example.university_library.main;
 
-import com.example.java_oop.university_library.model.*;
+import com.example.university_library.model.*;
 
 import java.util.Date;
 
