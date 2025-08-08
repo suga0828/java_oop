@@ -38,7 +38,6 @@ java_oop/
 ### Requisitos
 
 - Java 8 o superior
-- Maven (opcional, pero recomendado)
 
 ### Compilación
 

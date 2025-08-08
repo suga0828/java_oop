@@ -43,6 +43,16 @@ public class Library {
         books.add(book);
     }
 
+
+    /**
+     * Registra un nuevo préstamo en la biblioteca.
+     *
+     * @param loan Préstamo a registrar.
+     */
+    public void registerLoan(Loan loan) {
+        loans.add(loan);
+    }
+
     /**
      * Busca un libro por su ISBN.
      *

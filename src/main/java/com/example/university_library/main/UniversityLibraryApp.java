@@ -8,6 +8,7 @@ import java.util.Date;
  * Clase principal de la aplicación del Sistema de Biblioteca Universitaria.
  */
 public class UniversityLibraryApp {
+
     /**
      * Registra un mensaje con marca de tiempo.
      *
@@ -66,11 +67,11 @@ public class UniversityLibraryApp {
 
         // Create and add loans
         Loan loan1 = new Loan(library.getNextLoanNumber(), loanDate, returnDate, student1, book1);
-        library.getLoans().add(loan1);
+        library.registerLoan(loan1);
         log("Número de préstamo generado: " + loan1.getNumber());
 
         Loan loan2 = new Loan(library.getNextLoanNumber(), loanDate, returnDate, student1, book4);
-        library.getLoans().add(loan2);
+        library.registerLoan(loan2);
         log("Número de préstamo generado: " + loan2.getNumber());
 
         // Show library status
