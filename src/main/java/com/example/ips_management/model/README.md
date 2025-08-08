@@ -69,11 +69,11 @@ classDiagram
         -phone : String
         -appointments : Appointment[]
         +Patient(String id, String name, City city, String address, String phone)
-        +String getId()
-        +String getName()
-        +City getCity()
-        +String getAddress()
-        +String getPhone()
+        +getId() : String
+        +getName() : String
+        +getCity() : City
+        +getAddress() : String
+        +getPhone() : String
     }
 
     note for Ips "Institución Prestadora de Servicios de Salud"
@@ -96,14 +96,14 @@ classDiagram
     }
 
     %% Relationships
-    Patient "1" -- "1" City : resides in >
-    MedicalCenter "1" -- "1" City : located in >
-    Patient "1" -- "*" Appointment : has >
-    Doctor "1" -- "*" Appointment : serves >
-    MedicalCenter "1" -- "*" Appointment : hosts >
-    Ips "1" -- "*" Patient : manages >
-    Ips "1" -- "*" Doctor : manages >
-    Ips "1" -- "*" MedicalCenter : manages >
-    Ips "1" -- "*" Appointment : manages >
+    Patient "1" --> "1" City : vive en
+    MedicalCenter "1" --> "1" City : ubicada en
+    Patient "1" --> "*" Appointment : tiene
+    Doctor "1" --> "*" Appointment : atiende
+    MedicalCenter "1" --> "*" Appointment : tiene
+    Ips "1" --> "*" Patient : administra
+    Ips "1" --> "*" Doctor : administra
+    Ips "1" --> "*" MedicalCenter : administra
+    Ips "1" --> "*" Appointment : agenda
 
 ```

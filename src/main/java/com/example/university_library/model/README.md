@@ -68,7 +68,7 @@ classDiagram
         -student : Student
         -book : Book
         +Loan(number : String, loanDate : Date, returnDate : Date, student : Student, book : Book)
-        +String getNumber()
+        +getNumber() : String
     }
 
     note for Library "Biblioteca"
@@ -85,13 +85,13 @@ classDiagram
     }
 
     %% Relationships
-    Author "1" --> "1" Country : born in
-    Publisher "1" --> "1" Country : based in
-    Book "1" --> "1" Author : written by
-    Book "1" --> "1" Publisher : published by
-    Loan "1" --> "1" Student : loaned to
-    Loan "1" --> "1" Book : loaned
-    Library "1" --> "*" Book : has
-    Library "1" --> "*" Loan : has
+    Author "1" --> "1" Country : nacido en
+    Publisher "1" --> "1" Country : ubicada en
+    Book "1" --> "1" Author : escrito por
+    Book "1" --> "1" Publisher : publicado por
+    Loan "1" --> "1" Student : prestado a
+    Loan "1" --> "1" Book : prestado
+    Library "1" --> "*" Book : tiene
+    Library "1" --> "*" Loan : tiene
 
 ```
