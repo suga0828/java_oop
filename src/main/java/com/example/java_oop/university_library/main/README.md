@@ -148,7 +148,7 @@ javac -d target/classes -sourcepath src/main/java src/main/java/co/edu/umng/poo/
 
 ```bash
 # Desde el directorio del proyecto
-java -cp target/classes main.university_library.com.example.java_oop.UniversityLibraryApp
+java -cp target/classes main.university_library.java_oop.UniversityLibraryApp
 ```
 
 ## Notas

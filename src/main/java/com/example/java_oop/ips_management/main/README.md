@@ -53,7 +53,7 @@ javac -d target/classes -sourcepath src/main/java src/main/java/com/example/java
 
 ```bash
 # Desde el directorio del proyecto
-java -cp target/classes com.example.java_oop.ips_management.main.IpsManagementApp
+java -cp target/classes main.ips_management.com.example.java_oop.IpsManagementApp
 ```
 
 ## Uso
