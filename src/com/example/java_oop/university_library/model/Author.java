@@ -9,8 +9,8 @@ public class Author {
 
     /**
      * Crea una nueva instancia de Autor.
-     * 
-     * @param name Nombre del autor.
+     *
+     * @param name    Nombre del autor.
      * @param country País de origen del autor.
      */
     public Author(String name, Country country) {

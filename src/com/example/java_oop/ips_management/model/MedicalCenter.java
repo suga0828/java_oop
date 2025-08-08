@@ -10,9 +10,9 @@ public class MedicalCenter {
 
     /**
      * Crea una nueva instancia de Centro Médico.
-     * 
-     * @param code El código del centro médico.
-     * @param city La ciudad donde se encuentra el centro médico.
+     *
+     * @param code    El código del centro médico.
+     * @param city    La ciudad donde se encuentra el centro médico.
      * @param address La dirección del centro médico.
      */
     public MedicalCenter(String code, City city, String address) {

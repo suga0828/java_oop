@@ -10,9 +10,9 @@ public class Student {
 
     /**
      * Crea una nueva instancia de Estudiante.
-     * 
-     * @param id Identificación del estudiante.
-     * @param name Nombre del estudiante.
+     *
+     * @param id      Identificación del estudiante.
+     * @param name    Nombre del estudiante.
      * @param program Programa académico del estudiante.
      */
     public Student(String id, String name, String program) {

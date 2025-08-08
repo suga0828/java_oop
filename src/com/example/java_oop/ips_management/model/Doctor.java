@@ -12,15 +12,15 @@ public class Doctor {
 
     /**
      * Crea una nueva instancia de Doctor.
-     * 
-     * @param code Código único del médico.
-     * @param firstName Primer nombre del médico.
-     * @param lastName Apellido del médico.
-     * @param specialization Especialización médica del doctor.
+     *
+     * @param code               Código único del médico.
+     * @param firstName          Primer nombre del médico.
+     * @param lastName           Apellido del médico.
+     * @param specialization     Especialización médica del doctor.
      * @param specializationYear Año en que el médico completó la especialización.
      */
-    public Doctor(String code, String firstName, String lastName, 
-                 String specialization, int specializationYear) {
+    public Doctor(String code, String firstName, String lastName,
+                  String specialization, int specializationYear) {
         this.code = code;
         this.firstName = firstName;
         this.lastName = lastName;

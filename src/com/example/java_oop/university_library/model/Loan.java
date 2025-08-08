@@ -14,12 +14,12 @@ public class Loan {
 
     /**
      * Crea una nueva instancia de Préstamo.
-     * 
-     * @param number Número del préstamo.
-     * @param loanDate Fecha en que se realizó el préstamo.
+     *
+     * @param number     Número del préstamo.
+     * @param loanDate   Fecha en que se realizó el préstamo.
      * @param returnDate Fecha esperada de devolución.
-     * @param student Estudiante que realizó el préstamo.
-     * @param book Libro que fue prestado.
+     * @param student    Estudiante que realizó el préstamo.
+     * @param book       Libro que fue prestado.
      */
     public Loan(String number, Date loanDate, Date returnDate, Student student, Book book) {
         this.number = number;

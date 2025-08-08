@@ -16,12 +16,12 @@ public class Patient {
 
     /**
      * Crea una nueva instancia de Paciente.
-     * 
-     * @param id Número de identificación del paciente.
-     * @param name Nombre del paciente.
-     * @param city Ciudad del paciente.
-     * @param address Dirección del paciente.
-     * @param phone Número de teléfono del paciente.
+     *
+     * @param id           Número de identificación del paciente.
+     * @param name         Nombre del paciente.
+     * @param city         Ciudad del paciente.
+     * @param address      Dirección del paciente.
+     * @param phone        Número de teléfono del paciente.
      * @param appointments Citas del paciente.
      */
     public Patient(String id, String name, City city, String address, String phone) {
@@ -35,7 +35,9 @@ public class Patient {
     /**
      * @return Número de identificación del paciente.
      */
-    public String getId() { return this.id; }
+    public String getId() {
+        return this.id;
+    }
 
     /**
      * @return Nombre del paciente.

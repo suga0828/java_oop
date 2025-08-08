@@ -9,7 +9,7 @@ public class Country {
 
     /**
      * Crea una nueva instancia de País.
-     * 
+     *
      * @param code Código del país.
      * @param name Nombre del país.
      */

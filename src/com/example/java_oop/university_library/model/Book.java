@@ -13,11 +13,11 @@ public class Book {
 
     /**
      * Crea una nueva instancia de Libro.
-     * 
-     * @param ISBN ISBN del libro.
-     * @param title Título del libro.
-     * @param edition Edición del libro.
-     * @param author Autor del libro.
+     *
+     * @param ISBN      ISBN del libro.
+     * @param title     Título del libro.
+     * @param edition   Edición del libro.
+     * @param author    Autor del libro.
      * @param publisher Editorial del libro.
      */
     public Book(String ISBN, String title, String edition, Author author, Publisher publisher) {
@@ -52,7 +52,7 @@ public class Book {
 
     /**
      * Establece el estado de préstamo del libro.
-     * 
+     *
      * @param borrowed Nuevo estado de préstamo.
      */
     public void setBorrowed(boolean borrowed) {

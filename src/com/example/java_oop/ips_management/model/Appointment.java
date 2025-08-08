@@ -18,16 +18,16 @@ public class Appointment {
 
     /**
      * Crea una nueva instancia de Cita Médica.
-     * 
-     * @param number Número único de la cita.
-     * @param patient Paciente que asiste a la cita.
-     * @param doctor Médico que atenderá la cita.
-     * @param date Fecha y hora de la cita.
-     * @param status Estado actual de la cita.
+     *
+     * @param number        Número único de la cita.
+     * @param patient       Paciente que asiste a la cita.
+     * @param doctor        Médico que atenderá la cita.
+     * @param date          Fecha y hora de la cita.
+     * @param status        Estado actual de la cita.
      * @param medicalCenter Centro médico donde se realizará la cita.
      */
     public Appointment(String number, Patient patient, Doctor doctor, Date date, String status,
-                        MedicalCenter medicalCenter) {
+                       MedicalCenter medicalCenter) {
         this.number = number;
         this.patient = patient;
         this.doctor = doctor;
@@ -59,7 +59,7 @@ public class Appointment {
 
     /**
      * Cambia el estado de la cita.
-     * 
+     *
      * @param newStatus Nuevo estado para la cita.
      */
     public void setStatus(String newStatus) {

@@ -9,7 +9,7 @@ public class City {
 
     /**
      * Crea una nueva instancia de Ciudad.
-     * 
+     *
      * @param code El código de la ciudad.
      * @param name El nombre de la ciudad.
      */
@@ -19,7 +19,6 @@ public class City {
     }
 
     /**
-     *
      * @return Nombre de la ciudad
      */
     public String getName() {

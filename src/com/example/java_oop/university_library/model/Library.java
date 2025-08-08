@@ -13,7 +13,7 @@ public class Library {
 
     /**
      * Genera el siguiente número de préstamo.
-     * 
+     *
      * @return El siguiente número de préstamo como cadena formateada.
      */
     public String getNextLoanNumber() {

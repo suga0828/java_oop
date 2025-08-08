@@ -10,9 +10,9 @@ public class Publisher {
 
     /**
      * Crea una nueva instancia de Editorial.
-     * 
-     * @param code Código de la editorial.
-     * @param name Nombre de la editorial.
+     *
+     * @param code    Código de la editorial.
+     * @param name    Nombre de la editorial.
      * @param country País de la editorial.
      */
     public Publisher(String code, String name, Country country) {

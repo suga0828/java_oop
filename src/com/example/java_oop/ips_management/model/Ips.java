@@ -1,20 +1,18 @@
 package com.example.java_oop.ips_management.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Representa una Institución Prestadora de Servicios de Salud (IPS)
  * que gestiona pacientes, doctores, centros médicos y citas.
  */
 public class Ips {
-    private int nextAppointmentNumber = 1;
     private final List<Patient> patients = new ArrayList<>();
     private final List<Doctor> doctors = new ArrayList<>();
     private final List<MedicalCenter> medicalCenters = new ArrayList<>();
     private final List<Appointment> appointments = new ArrayList<>();
+    private int nextAppointmentNumber = 1;
 
     /**
      * Genera el siguiente número de préstamo.
@@ -56,29 +54,29 @@ public class Ips {
 
     /**
      * Registra un nuevo paciente en la IPS.
-     * 
+     *
      * @param patient Paciente a registrar.
      */
     public void registerPatient(Patient patient) {
-       patients.add(patient);
+        patients.add(patient);
     }
 
     /**
      * Registra un nuevo doctor en la IPS.
-     * 
+     *
      * @param doctor Doctor a registrar.
-    */
+     */
     public void registerDoctor(Doctor doctor) {
         doctors.add(doctor);
     }
-    
+
     /**
      * Registra un nuevo centro médico en la IPS.
-     * 
+     *
      * @param medicalCenter Centro médico a registrar.
-    */
+     */
     public void registerMedicalCenter(MedicalCenter medicalCenter) {
-         medicalCenters.add(medicalCenter);
+        medicalCenters.add(medicalCenter);
     }
 
     /**
