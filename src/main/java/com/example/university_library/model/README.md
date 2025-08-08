@@ -89,7 +89,7 @@ classDiagram
     Publisher "1" --> "1" Country : ubicada en
     Book "1" --> "1" Author : escrito por
     Book "1" --> "1" Publisher : publicado por
-    Loan "1" --> "1" Student : prestado a
+    Loan "1" --> "1" Student : para
     Loan "1" --> "1" Book : prestado
     Library "1" --> "*" Book : tiene
     Library "1" --> "*" Loan : tiene
