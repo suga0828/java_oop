@@ -147,7 +147,24 @@ javac -d out $(find src/main/java -name "*.java")
 java -cp out com.example.university_library.main.UniversityLibraryApp
 ```
 
-## Notas
+## Uso
+
+El sistema demuestra las siguientes funcionalidades:
+
+1. Creación de libros, autores, editoriales y estudiantes
+2. Registro de préstamos
+3. Búsqueda de préstamos por número
+4. Visualización de información detallada de los préstamos
+
+El sistema incluye una demostración con datos de ejemplo que muestra el flujo completo de:
+
+- Creación de libros, autores, editoriales y estudiantes
+- Registro de préstamos
+- Búsqueda y visualización de préstamos existentes
+
+## Diagrama de Clases
+
+## Notas Adicionales
 
 - El sistema genera automáticamente números de préstamo secuenciales.
 - Los libros marcados como prestados no pueden ser prestados nuevamente hasta ser devueltos.
