@@ -11,10 +11,10 @@ public class IpsManagementApp {
     /**
      * Registra un mensaje en el log con marca de tiempo.
      *
-     * @param mensaje Mensaje a registrar.
+     * @param message Mensaje a registrar.
      */
-    protected static void log(String mensaje) {
-        System.out.println("[" + new java.util.Date() + "] " + mensaje);
+    protected static void log(String message) {
+        System.out.println("[" + new java.util.Date() + "] " + message);
     }
 
     /**
