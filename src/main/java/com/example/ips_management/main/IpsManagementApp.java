@@ -84,8 +84,9 @@ public class IpsManagementApp {
         // Show appointment3 data and related patient info
         log("=== RESUMEN DE CITAS AGENDADAS ===\n");
         Appointment foundAppointment = ips.findAppointmentByNumber(appointment3.getNumber());
+
         Patient foundPatient = foundAppointment.getPatient();
-        System.out.println(String.format(
+        System.out.printf(
                 """
                         Cita #%s
                           Paciente:
@@ -107,7 +108,7 @@ public class IpsManagementApp {
                           Centro Médico:
                             Ciudad: %s
                             Dirección: %s
-                        """,
+                        %n""",
                 foundAppointment.getNumber(),
                 foundPatient.getId(),
                 foundPatient.getName(),
@@ -124,6 +125,6 @@ public class IpsManagementApp {
                 foundAppointment.getStatus(),
                 foundAppointment.getMedicalCenter().getCity().getName(),
                 foundAppointment.getMedicalCenter().getAddress()
-        ));
+        );
     }
 }
