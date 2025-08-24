@@ -80,12 +80,14 @@ java_oop/
 │   └── com/
 │       └── example/
 │           └── sales_food_catalog/
-│               ├── model/       # Clases del modelo de dominio
-│               │   ├── Product.java
-│               │   ├── PerishableProduct.java
-│               │   └── NonPerishableProduct.java
-│               └── main/        # Clase principal de la aplicación
-│                   └── SalesFoodCatalogApp.java
+│               ├── main/        # Clase principal de la aplicación
+│               │   └── SalesFoodCatalogApp.java
+│               └── model/       # Clases del modelo de dominio
+│                   ├── Company.java
+│                   ├── NonPerishableProduct.java
+│                   ├── NonPerishableType.java
+│                   ├── PerishableProduct.java
+│                   └── Product.java
 └── README.md
 ```
 
