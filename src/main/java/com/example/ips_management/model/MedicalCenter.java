@@ -4,9 +4,9 @@ package com.example.ips_management.model;
  * Representa un centro médico en el sistema de proveedores de atención médica.
  */
 public class MedicalCenter {
-    private String code;
-    private City city;
-    private String address;
+    private final String code;
+    private final City city;
+    private final String address;
 
     /**
      * Crea una nueva instancia de Centro Médico.

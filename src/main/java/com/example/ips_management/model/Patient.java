@@ -7,12 +7,12 @@ import java.util.List;
  * Representa un paciente en el sistema de citas médicas.
  */
 public class Patient {
-    private String id;
-    private String name;
-    private City city;
-    private String address;
-    private String phone;
-    private List<Appointment> appointments = new ArrayList<>();
+    private final String id;
+    private final String name;
+    private final City city;
+    private final String address;
+    private final String phone;
+    private final List<Appointment> appointments = new ArrayList<>();
 
     /**
      * Crea una nueva instancia de Paciente.

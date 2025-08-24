@@ -8,11 +8,11 @@ import java.util.List;
  * que gestiona pacientes, doctores, centros médicos y citas.
  */
 public class Ips {
+    private final List<Patient> patients = new ArrayList<>();
+    private final List<Doctor> doctors = new ArrayList<>();
+    private final List<MedicalCenter> medicalCenters = new ArrayList<>();
+    private final List<Appointment> appointments = new ArrayList<>();
     private int nextAppointmentNumber = 1;
-    private List<Patient> patients = new ArrayList<>();
-    private List<Doctor> doctors = new ArrayList<>();
-    private List<MedicalCenter> medicalCenters = new ArrayList<>();
-    private List<Appointment> appointments = new ArrayList<>();
 
     /**
      * Genera el siguiente número de préstamo.

@@ -78,21 +78,21 @@ public class UniversityLibraryApp {
         log("=== ESTADO ACTUAL DE LA BIBLIOTECA ===\n");
         log("Resumen de libros:");
         for (Book book : library.getBooks()) {
-            System.out.println(String.format("""
-                    Título: %s
-                      ISBN: %s
-                      Edición: %s
-                      Autor: %s
-                      Editorial: %s
-                      Estado: %s
-                    """,
+            System.out.printf("""
+                            Título: %s
+                              ISBN: %s
+                              Edición: %s
+                              Autor: %s
+                              Editorial: %s
+                              Estado: %s
+                            %n""",
                     book.getTitle(),
                     book.getISBN(),
                     book.getEdition(),
                     book.getAuthor().getName(),
                     book.getPublisher().getName(),
                     book.isBorrowed() ? "PRESTADO" : "DISPONIBLE"
-            ));
+            );
         }
     }
 }

@@ -4,11 +4,11 @@ package com.example.university_library.model;
  * Representa un libro en el sistema de biblioteca universitaria.
  */
 public class Book {
-    private String ISBN;
-    private String title;
-    private String edition;
-    private Author author;
-    private Publisher publisher;
+    private final String ISBN;
+    private final String title;
+    private final String edition;
+    private final Author author;
+    private final Publisher publisher;
     private boolean borrowed;
 
     /**

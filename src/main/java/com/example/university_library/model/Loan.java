@@ -6,11 +6,11 @@ import java.util.Date;
  * Representa un préstamo de libro en el sistema de biblioteca universitaria.
  */
 public class Loan {
-    private String number;
-    private Date loanDate;
-    private Date returnDate;
-    private Student student;
-    private Book book;
+    private final String number;
+    private final Date loanDate;
+    private final Date returnDate;
+    private final Student student;
+    private final Book book;
 
     /**
      * Crea una nueva instancia de Préstamo.

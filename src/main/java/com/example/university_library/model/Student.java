@@ -4,9 +4,9 @@ package com.example.university_library.model;
  * Representa un estudiante en el sistema de biblioteca universitaria.
  */
 public class Student {
-    private String id;
-    private String name;
-    private String program;
+    private final String id;
+    private final String name;
+    private final String program;
 
     /**
      * Crea una nueva instancia de Estudiante.

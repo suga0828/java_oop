@@ -7,9 +7,9 @@ import java.util.List;
  * Representa el sistema de biblioteca universitaria.
  */
 public class Library {
+    private final List<Book> books = new ArrayList<>();
+    private final List<Loan> loans = new ArrayList<>();
     private int nextLoanNumber = 1;
-    private List<Book> books = new ArrayList<>();
-    private List<Loan> loans = new ArrayList<>();
 
     /**
      * Genera el siguiente número de préstamo.

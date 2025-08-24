@@ -4,11 +4,11 @@ package com.example.ips_management.model;
  * Representa un médico en el sistema de proveedores de atención médica.
  */
 public class Doctor {
-    private String code;
-    private String firstName;
-    private String lastName;
-    private String specialization;
-    private int specializationYear;
+    private final String code;
+    private final String firstName;
+    private final String lastName;
+    private final String specialization;
+    private final int specializationYear;
 
     /**
      * Crea una nueva instancia de Doctor.

@@ -5,7 +5,7 @@ package com.example.sales_food_catalog.model;
  * El precio de venta se ajusta según los días restantes para caducar.
  */
 public class PerishableProduct extends Product {
-    private int daysToExpire;
+    private final int daysToExpire;
 
     /**
      * Crea una nueva instancia de Producto Perecedero.

@@ -4,8 +4,8 @@ package com.example.university_library.model;
  * Representa un país en el sistema de biblioteca universitaria.
  */
 public class Country {
-    private String code;
-    private String name;
+    private final String code;
+    private final String name;
 
     /**
      * Crea una nueva instancia de País.

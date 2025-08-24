@@ -4,8 +4,8 @@ package com.example.university_library.model;
  * Representa un autor en el sistema de biblioteca universitaria.
  */
 public class Author {
-    private String name;
-    private Country country;
+    private final String name;
+    private final Country country;
 
     /**
      * Crea una nueva instancia de Autor.

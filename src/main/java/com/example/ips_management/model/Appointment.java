@@ -9,12 +9,12 @@ import java.util.Date;
  * Representa una cita médica en el sistema.
  */
 public class Appointment {
-    private String number;
-    private Patient patient;
-    private Doctor doctor;
-    private Date date;
+    private final String number;
+    private final Patient patient;
+    private final Doctor doctor;
+    private final Date date;
+    private final MedicalCenter medicalCenter;
     private String status; // "scheduled", "completed", "cancelled"
-    private MedicalCenter medicalCenter;
 
     /**
      * Crea una nueva instancia de Cita Médica.
