@@ -45,9 +45,9 @@ public class NonPerishableProduct extends Product {
     public double calculateSalePrice() {
         // Aumenta el precio según el tipo
         double factor = switch (type) {
-            case A -> 1.3;
-            case B -> 1.15;
-            case C -> 1.05;
+            case A -> 1.03;
+            case B -> 1.02;
+            case C -> 1.015;
         };
         return getSalePrice() * factor;
     }
