@@ -7,6 +7,9 @@ import com.example.sales_food_catalog.model.PerishableProduct;
 
 /**
  * Clase principal de la aplicación de Catálogo de Ventas de Productos Alimenticios (Company).
+ *
+ * @author 200582 Alexander Sandoval
+ * @since 2025-08-30
  */
 public class SalesFoodCatalogApp {
 

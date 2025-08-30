@@ -3,8 +3,8 @@ package com.example.sales_food_catalog.model;
 import java.util.ArrayList;
 
 /**
- * Company manages a catalog of food products (perishable and non-perishable).
- * Provides methods to add products, display the catalog, and update sale prices.
+ * La clase Company gestiona un catálogo de productos alimenticios (perecederos y no perecederos).
+ * Proporciona métodos para agregar productos, mostrar el catálogo y actualizar los precios de venta.
  */
 public class Company {
     private final ArrayList<Product> products = new ArrayList<>();

@@ -66,8 +66,8 @@ classDiagram
     }
 
     %% Relaciones
-    Product <|-- PerishableProduct
-    Product <|-- NonPerishableProduct
+    Product <|-- PerishableProduct : es un
+    Product <|-- NonPerishableProduct : es un
     Company "1" o-- "*" Product : maneja
     NonPerishableProduct --> NonPerishableType : tiene
 ```
