@@ -38,12 +38,20 @@ public class PerishableProduct extends Product {
     public double calculateSalePrice() {
         double factor = 1.0;
         if (daysToExpire == 1) {
+            // Descuento del 4%
             factor = 0.96;
         } else if (daysToExpire == 2) {
+            // Descuento del 3%
             factor = 0.97;
         } else if (daysToExpire == 3) {
+            // Descuento del 2%
             factor = 0.98;
         }
-        return getPurchasePrice() * factor;
+        return getSalePrice() * factor;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("; Días para caducar: %d", daysToExpire);
     }
 }

@@ -59,6 +59,11 @@ public abstract class Product {
         this.salePrice = price;
     }
 
+    @Override
+    public String toString() {
+        return String.format("Código: %s; Descripción: %s; Compra: $%.2f; Venta: $%.2f", code, description, purchasePrice, salePrice);
+    }
+
     /**
      * @return Precio de venta calculado
      */

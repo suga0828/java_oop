@@ -51,4 +51,9 @@ public class NonPerishableProduct extends Product {
         };
         return getPurchasePrice() * factor;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + String.format("; Tipo: %s", type);
+    }
 }

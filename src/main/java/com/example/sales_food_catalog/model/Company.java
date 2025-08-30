@@ -23,7 +23,7 @@ public class Company {
      */
     public void showCatalog() {
         for (Product product : products) {
-            System.out.println(product.getCode() + ": " + product.getDescription() + ", Compra: $" + product.getPurchasePrice() + ", Venta: $" + product.getSalePrice());
+            System.out.println(product.toString());
         }
     }
 
