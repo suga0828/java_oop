@@ -43,13 +43,13 @@ public class NonPerishableProduct extends Product {
      */
     @Override
     public double calculateSalePrice() {
-        // Lógica de ejemplo: aumenta el precio según el tipo
+        // Aumenta el precio según el tipo
         double factor = switch (type) {
             case A -> 1.3;
             case B -> 1.15;
             case C -> 1.05;
         };
-        return getPurchasePrice() * factor;
+        return getSalePrice() * factor;
     }
 
     @Override
