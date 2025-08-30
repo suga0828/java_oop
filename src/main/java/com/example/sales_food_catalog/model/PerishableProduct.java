@@ -37,10 +37,12 @@ public class PerishableProduct extends Product {
     @Override
     public double calculateSalePrice() {
         double factor = 1.0;
-        if (daysToExpire <= 3) {
-            factor = 0.5;
-        } else if (daysToExpire <= 7) {
-            factor = 0.8;
+        if (daysToExpire == 1) {
+            factor = 0.96;
+        } else if (daysToExpire == 2) {
+            factor = 0.97;
+        } else if (daysToExpire == 3) {
+            factor = 0.98;
         }
         return getPurchasePrice() * factor;
     }
