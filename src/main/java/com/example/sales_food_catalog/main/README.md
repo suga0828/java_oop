@@ -36,19 +36,24 @@ classDiagram
         +getPurchasePrice() : double
         +getSalePrice() : double
         +setSalePrice(price : double) : void
+        +toString() : String
         +calculateSalePrice() : double*
     }
 
     class PerishableProduct {
         -daysToExpire : int
         +PerishableProduct(code : String, description : String, purchasePrice : double, salePrice : double, daysToExpire : int)
+        +getDaysToExpire : int
         +calculateSalePrice() : double
+        +toString() : String
     }
 
     class NonPerishableProduct {
         -type : NonPerishableType
         +NonPerishableProduct(code : String, description : String, purchasePrice : double, salePrice : double, type : NonPerishableType)
+        +getType : NonPerishableType
         +calculateSalePrice() : double
+        +toString() : String
     }
 
     class Company {
@@ -68,7 +73,7 @@ classDiagram
     %% Relaciones
     Product <|-- PerishableProduct : es un
     Product <|-- NonPerishableProduct : es un
-    Company "1" o-- "*" Product : maneja
+    Company "1" o-- "0..*" Product : maneja
     NonPerishableProduct --> NonPerishableType : tiene
 ```
 
