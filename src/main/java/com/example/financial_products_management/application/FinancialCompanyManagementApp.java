@@ -97,32 +97,32 @@ public class FinancialCompanyManagementApp {
             // Savings Account operations
             log("--- Operaciones en Cuenta de Ahorro ---");
             FinancialProduct savings = financialCompany.consultByProductNumber("001");
-            System.out.println("\nEstado inicial: " + savings);
+            System.out.println("Estado inicial: " + savings);
 
             String result1 = financialCompany.performDeposit("001", 100000.0);
-            System.out.println("\nDepósito de $100,000: " + result1);
-            System.out.println("\nEstado actual: " + financialCompany.consultByProductNumber("001"));
+            System.out.println("Depósito de $100,000: " + result1);
+            System.out.println("Estado actual: " + financialCompany.consultByProductNumber("001"));
 
             String result2 = financialCompany.performWithdrawal("001", 50000.0);
-            System.out.println("\nRetiro de $50,000: " + result2);
-            System.out.println("\nEstado final: " + financialCompany.consultByProductNumber("001") + "\n");
+            System.out.println("Retiro de $50,000: " + result2);
+            System.out.println("Estado final: " + financialCompany.consultByProductNumber("001") + "\n");
 
             // Checking Account operations
             log("--- Operaciones en Cuenta Corriente ---");
             FinancialProduct checking = financialCompany.consultByProductNumber("002");
-            System.out.println("\nEstado inicial: " + checking);
+            System.out.println("Estado inicial: " + checking);
 
             String result3 = financialCompany.performWithdrawal("002", 1100000.0);
-            System.out.println("\nRetiro de $1,100,000 (con sobregiro): " + result3);
-            System.out.println("\nEstado actual: " + financialCompany.consultByProductNumber("002"));
+            System.out.println("Retiro de $1,100,000 (con sobregiro): " + result3);
+            System.out.println("Estado actual: " + financialCompany.consultByProductNumber("002"));
 
             // Try to exceed limit
             try {
                 financialCompany.performWithdrawal("002", 200000.0);
             } catch (InsufficientFundsException e) {
-                System.out.println("\nIntento de retiro de $200,000 adicionales: " + e.getMessage());
+                System.out.println("Intento de retiro de $200,000 adicionales: " + e.getMessage());
             }
-            System.out.println("\nEstado final: " + financialCompany.consultByProductNumber("002") + "\n");
+            System.out.println("Estado final: " + financialCompany.consultByProductNumber("002") + "\n");
 
         } catch (Exception e) {
             System.err.println("Error en demostración: " + e.getMessage());
