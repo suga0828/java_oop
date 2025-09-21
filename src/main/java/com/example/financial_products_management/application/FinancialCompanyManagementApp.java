@@ -3,26 +3,26 @@ package com.example.financial_products_management.application;
 import com.example.financial_products_management.domain.customer.Customer;
 import com.example.financial_products_management.domain.financial_company.FinancialCompany;
 import com.example.financial_products_management.domain.financial_product.model.FinancialProduct;
-import com.example.financial_products_management.domain.financial_product.model.account.*;
-import com.example.financial_products_management.domain.repository.*;
-import com.example.financial_products_management.domain.shared.*;
-import com.example.financial_products_management.exception.*;
+import com.example.financial_products_management.domain.repository.FinancialCompanyRepository;
+import com.example.financial_products_management.domain.repository.ProductRepository;
+import com.example.financial_products_management.domain.shared.HousingClassification;
+import com.example.financial_products_management.exception.InsufficientFundsException;
+import com.example.financial_products_management.exception.ProductNotFoundException;
 import com.example.financial_products_management.infrastructure.validation.InputValidator;
-import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Scanner;
 
 /**
  * Clase principal de la aplicación de Gestión de Productos Financieros.
  * Maneja la interfaz de usuario.
- * 
+ *
  * @author 200582 Alexander Sandoval
  * @since 2025-09-20
  */
 public class FinancialCompanyManagementApp {
     private final FinancialCompany financialCompany;
     private final InputValidator validator;
-    private final Scanner scanner;
 
     /**
      * Crea una nueva instancia de la aplicación.
@@ -30,7 +30,7 @@ public class FinancialCompanyManagementApp {
     public FinancialCompanyManagementApp() {
         ProductRepository repository = new FinancialCompanyRepository();
         this.financialCompany = new FinancialCompany(repository);
-        this.scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         this.validator = new InputValidator(scanner);
     }
 
@@ -49,35 +49,38 @@ public class FinancialCompanyManagementApp {
      * @param args Argumentos de línea de comandos (no utilizados)
      */
     public static void main(String[] args) {
-        log("Inicializando sistema de la Financiera Mucha Plata...\n");
-        
+        log("Inicializando sistema de la Entidad Financiera...\n");
+
         FinancialCompanyManagementApp app = new FinancialCompanyManagementApp();
-        app.createSampleData();
-        app.runDemonstration();
-        app.showMenu();
         
+        app.createInitialProducts();
+
+        app.executeInitialOperations();
+
+        app.showInteractiveMenu();
+
         log("\n¡Gracias por usar el Sistema de Gestión de Productos Financieros!");
     }
-    
+
     /**
-     * Crea datos de ejemplo para demostrar el sistema.
+     * Crea productos financieros de ejemplo.
      */
-    private void createSampleData() {
+    private void createInitialProducts() {
         try {
-            // Crear algunos clientes de ejemplo
+            // Create clients
             Customer customer1 = new Customer("12345678", "Juan Carlos", "Pérez García", "3001234567");
             Customer customer2 = new Customer("87654321", "María Elena", "González López", "3009876543");
             Customer customer3 = new Customer("11223344", "Carlos Alberto", "Rodríguez Martín", "3005551234");
             Customer customer4 = new Customer("44332211", "Ana Sofía", "Hernández Ruiz", "3007778888");
 
-            log("Creando productos financieros de ejemplo...\n");
+            log("Creando productos financieros...\n");
 
-            // Crear productos usando los métodos del servicio
+            // Create financial products (accounts)
             financialCompany.createSavingsAccount("001", customer1, 500000.0);
             financialCompany.createCheckingAccount("002", customer2, 1000000.0, 200000.0);
             financialCompany.createHousingSavingsAccount("003", customer3, 2000000.0, 150000000.0, HousingClassification.VIS);
             financialCompany.createSalaryAccount("004", customer4, 1500000.0, 2500000.0);
-            
+
         } catch (Exception e) {
             System.err.println("Error creando datos de ejemplo: " + e.getMessage());
         }
@@ -86,76 +89,68 @@ public class FinancialCompanyManagementApp {
     /**
      * Ejecuta una demostración de las operaciones del sistema.
      */
-    private void runDemonstration() {
+    private void executeInitialOperations() {
         try {
-            log("=== DEMOSTRACIÓN DE OPERACIONES ===\n");
+            log("=== OPERACIONES INICIALES ===\n");
 
-            // Demostrar operaciones con manejo de excepciones
-            demonstrateOperations();
-            
-        } catch (Exception e) {
-            System.err.println("Error en la demostración: " + e.getMessage());
-        }
-    }
-    
-    /**
-     * Demuestra las operaciones bancarias con manejo de excepciones.
-     */
-    private void demonstrateOperations() {
-        try {
-            // Operaciones en cuenta de ahorro
+            try {
+            // Savings Account operations
             log("--- Operaciones en Cuenta de Ahorro ---");
             FinancialProduct savings = financialCompany.consultByProductNumber("001");
-            System.out.println("Estado inicial: " + savings);
-            
-            String result1 = financialCompany.performDeposit("001", 100000.0);
-            System.out.println("Depósito de $100,000: " + result1);
-            System.out.println("Estado actual: " + financialCompany.consultByProductNumber("001"));
-            
-            String result2 = financialCompany.performWithdrawal("001", 50000.0);
-            System.out.println("Retiro de $50,000: " + result2);
-            System.out.println("Estado final: " + financialCompany.consultByProductNumber("001") + "\n");
+            System.out.println("\nEstado inicial: " + savings);
 
-            // Operaciones en cuenta corriente
+            String result1 = financialCompany.performDeposit("001", 100000.0);
+            System.out.println("\nDepósito de $100,000: " + result1);
+            System.out.println("\nEstado actual: " + financialCompany.consultByProductNumber("001"));
+
+            String result2 = financialCompany.performWithdrawal("001", 50000.0);
+            System.out.println("\nRetiro de $50,000: " + result2);
+            System.out.println("\nEstado final: " + financialCompany.consultByProductNumber("001") + "\n");
+
+            // Checking Account operations
             log("--- Operaciones en Cuenta Corriente ---");
             FinancialProduct checking = financialCompany.consultByProductNumber("002");
-            System.out.println("Estado inicial: " + checking);
-            
+            System.out.println("\nEstado inicial: " + checking);
+
             String result3 = financialCompany.performWithdrawal("002", 1100000.0);
-            System.out.println("Retiro de $1,100,000 (con sobregiro): " + result3);
-            System.out.println("Estado actual: " + financialCompany.consultByProductNumber("002"));
-            
-            // Intentar exceder límite
+            System.out.println("\nRetiro de $1,100,000 (con sobregiro): " + result3);
+            System.out.println("\nEstado actual: " + financialCompany.consultByProductNumber("002"));
+
+            // Try to exceed limit
             try {
                 financialCompany.performWithdrawal("002", 200000.0);
             } catch (InsufficientFundsException e) {
-                System.out.println("Intento de retiro de $200,000 adicionales: " + e.getMessage());
+                System.out.println("\nIntento de retiro de $200,000 adicionales: " + e.getMessage());
             }
-            System.out.println("Estado final: " + financialCompany.consultByProductNumber("002") + "\n");
+            System.out.println("\nEstado final: " + financialCompany.consultByProductNumber("002") + "\n");
 
         } catch (Exception e) {
             System.err.println("Error en demostración: " + e.getMessage());
         }
+
+        } catch (Exception e) {
+            System.err.println("Error en la demostración: " + e.getMessage());
+        }
     }
-    
+
     /**
-     * Muestra el menú principal y gestiona la navegación.
+     * Muestra el menú interactivo y gestiona la navegación.
      */
-    public void showMenu() {
+    public void showInteractiveMenu() {
         log("=== INICIANDO MENÚ INTERACTIVO ===\n");
-        
+
         int option;
         do {
-            System.out.println("\n=== FINANCIERA MUCHA PLATA ===");
+            System.out.println("\n=== MENU INTERACTIVO ===");
             System.out.println("1. Crear nueva cuenta");
             System.out.println("2. Realizar operación (depósito/retiro)");
             System.out.println("3. Consultar producto por número");
             System.out.println("4. Consultar producto por titular");
             System.out.println("5. Lista de todos los titulares");
             System.out.println("0. Salir");
-            
+
             option = validator.getValidInteger("Seleccione una opción: ");
-            
+
             try {
                 switch (option) {
                     case 1 -> createAccountMenu();
@@ -171,7 +166,7 @@ public class FinancialCompanyManagementApp {
             }
         } while (option != 0);
     }
-    
+
     /**
      * Menú para crear nuevas cuentas.
      */
@@ -182,9 +177,9 @@ public class FinancialCompanyManagementApp {
             System.out.println("2. Cuenta Corriente");
             System.out.println("3. Cuenta de Ahorro Programado para Vivienda");
             System.out.println("4. Cuenta Especial para Pago de Salario");
-            
+
             int accountType = validator.getValidPositiveInteger("Seleccione el tipo de cuenta: ");
-            
+
             // Datos comunes
             ProductRepository repository = new FinancialCompanyRepository();
             String productNumber = validator.getValidUniqueProductNumber("Ingrese el número del producto: ", repository);
@@ -221,7 +216,7 @@ public class FinancialCompanyManagementApp {
             System.err.println("Error al crear la cuenta: " + e.getMessage());
         }
     }
-    
+
     /**
      * Menú para realizar operaciones bancarias.
      */
@@ -231,7 +226,7 @@ public class FinancialCompanyManagementApp {
             String productNumber = validator.getValidString("Ingrese el número del producto: ");
 
             FinancialProduct product = financialCompany.consultByProductNumber(productNumber);
-            
+
             // Mostrar datos del producto
             System.out.println("\nDatos del producto:");
             System.out.println("Cliente: " + product.getCustomer());
@@ -240,21 +235,18 @@ public class FinancialCompanyManagementApp {
             System.out.println("\n1. Depósito");
             System.out.println("2. Retiro");
             int operationType = validator.getValidPositiveInteger("Seleccione la operación: ");
-            
+
             if (operationType != 1 && operationType != 2) {
                 System.out.println("Operación no válida.");
                 return;
             }
-            
+
             double amount = validator.getValidAmount("Ingrese el monto: ");
-            boolean isDeposit = (operationType == 1);
-            
-            String result;
-            if (isDeposit) {
-                result = financialCompany.performDeposit(productNumber, amount);
-            } else {
-                result = financialCompany.performWithdrawal(productNumber, amount);
-            }
+            String result = switch (operationType) {
+                case 1 -> financialCompany.performDeposit(productNumber, amount);
+                case 2 -> financialCompany.performWithdrawal(productNumber, amount);
+                default -> throw new IllegalStateException("Tipo de operación inválido: " + operationType);
+            };
             System.out.println("Resultado: " + result);
 
         } catch (ProductNotFoundException e) {
@@ -267,7 +259,7 @@ public class FinancialCompanyManagementApp {
             System.err.println("Error al realizar la operación: " + e.getMessage());
         }
     }
-    
+
     /**
      * Menú para consultar producto por número.
      */
@@ -277,7 +269,7 @@ public class FinancialCompanyManagementApp {
             String productNumber = validator.getValidString("Ingrese el número del producto: ");
 
             FinancialProduct product = financialCompany.consultByProductNumber(productNumber);
-            
+
             System.out.println("\nDatos del titular:");
             System.out.println(product.getCustomer());
             System.out.println("\nDatos del producto:");
@@ -289,7 +281,7 @@ public class FinancialCompanyManagementApp {
             System.err.println("Error al consultar el producto: " + e.getMessage());
         }
     }
-    
+
     /**
      * Menú para consultar productos por titular.
      */
@@ -299,7 +291,7 @@ public class FinancialCompanyManagementApp {
             String identification = validator.getValidString("Ingrese la identificación del titular: ");
 
             FinancialProduct product = financialCompany.consultByCustomer(identification);
-            
+
             System.out.println("\nProducto encontrado:");
             System.out.println("\nDatos del titular:");
             System.out.println(product.getCustomer());
@@ -310,22 +302,22 @@ public class FinancialCompanyManagementApp {
             System.err.println("Error al consultar por titular: " + e.getMessage());
         }
     }
-    
+
     /**
      * Menú para listar todos los clientes.
      */
     private void listAllCustomersMenu() {
         try {
             System.out.println("\n=== LISTA DE TODOS LOS TITULARES ===");
-            
+
             List<FinancialProduct> products = financialCompany.getAllProducts();
-            
+
             if (products.isEmpty()) {
                 System.out.println("No hay productos registrados en la financiera.");
                 return;
             }
 
-            System.out.printf("%-40s %-15s %-15s %-35s %-15s%n", 
+            System.out.printf("%-40s %-15s %-15s %-35s %-15s%n",
                     "Datos del Titular", "Número Producto", "Fecha Apertura", "Tipo de Producto", "Saldo");
             System.out.println("=".repeat(120));
 
@@ -342,21 +334,21 @@ public class FinancialCompanyManagementApp {
             System.err.println("Error al listar los titulares: " + e.getMessage());
         }
     }
-    
+
     /**
      * Menú para crear un nuevo cliente.
      */
     private Customer createCustomerMenu() {
         System.out.println("\n--- Datos del titular ---");
-        
+
         String identification = validator.getValidString("Ingrese la identificación: ");
         String firstName = validator.getValidString("Ingrese los nombres: ");
         String lastName = validator.getValidString("Ingrese los apellidos: ");
         String phone = validator.getValidString("Ingrese el teléfono: ");
-        
+
         return new Customer(identification, firstName, lastName, phone);
     }
-    
+
     /**
      * Menú para seleccionar clasificación de vivienda.
      */
@@ -366,9 +358,9 @@ public class FinancialCompanyManagementApp {
         System.out.println("2. VIP (Vivienda de Interés Propietario)");
         System.out.println("3. VIS Renovación (Viviendas de Interés Social de Renovación)");
         System.out.println("4. No VIS (No de Interés Social)");
-        
+
         int option = validator.getValidPositiveInteger("Seleccione la clasificación: ");
-        
+
         return switch (option) {
             case 1 -> HousingClassification.VIS;
             case 2 -> HousingClassification.VIP;
