@@ -6,9 +6,6 @@ import java.util.Scanner;
 /**
  * Clase utilitaria para validación de entrada de datos.
  * Centraliza la lógica de validación y simplifica el código.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
  */
 public class InputValidator {
     private final Scanner scanner;

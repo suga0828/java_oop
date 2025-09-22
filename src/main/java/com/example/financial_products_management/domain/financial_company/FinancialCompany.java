@@ -12,9 +12,6 @@ import java.util.List;
 /**
  * Clase de servicio que gestiona las operaciones de negocio de productos financieros.
  * Utiliza el patrón Repository para el acceso a datos y se enfoca únicamente en la lógica de negocio.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
  */
 public class FinancialCompany {
     private final ProductRepository repository;

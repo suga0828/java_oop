@@ -1,19 +1,15 @@
 package com.example.financial_products_management.domain.financial_product.model;
 
 import com.example.financial_products_management.domain.customer.Customer;
-import com.example.financial_products_management.domain.shared.BankingOperations;
-import com.example.financial_products_management.exception.InsufficientFundsException;
 import java.time.LocalDate;
 
 /**
- * Clase abstracta que representa un producto financiero genérico.
+ * Clase concreta que representa un producto financiero genérico.
  * Provee atributos y métodos comunes para todos los productos financieros.
- * Implementa la interfaz BankingOperations para operaciones bancarias.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
+ * Las operaciones bancarias específicas son implementadas por las clases derivadas
+ * mediante las interfaces Depositable y Withdrawable según corresponda.
  */
-public abstract class FinancialProduct implements BankingOperations {
+public class FinancialProduct {
     private final String productNumber;
     private final LocalDate openingDate;
     private final Customer customer;
@@ -81,31 +77,15 @@ public abstract class FinancialProduct implements BankingOperations {
 
     /**
      * Obtiene el tipo de producto financiero.
+     * Las clases derivadas pueden sobrescribir este método para proporcionar
+     * un tipo específico.
      *
      * @return Tipo de producto
      */
-    public abstract String getProductType();
+    public String getProductType() {
+        return "Producto Financiero Genérico";
+    }
 
-    /**
-     * Realiza una operación de depósito en el producto.
-     *
-     * @param amount Monto a depositar
-     * @return Mensaje resultado de la operación
-     * @throws IllegalArgumentException Si el monto es inválido
-     */
-    @Override
-    public abstract String deposit(double amount) throws IllegalArgumentException;
-
-    /**
-     * Realiza una operación de retiro del producto.
-     *
-     * @param amount Monto a retirar
-     * @return Mensaje resultado de la operación
-     * @throws IllegalArgumentException Si el monto es inválido
-     * @throws InsufficientFundsException Si no hay fondos suficientes
-     */
-    @Override
-    public abstract String withdraw(double amount) throws IllegalArgumentException, InsufficientFundsException;
 
     @Override
     public String toString() {

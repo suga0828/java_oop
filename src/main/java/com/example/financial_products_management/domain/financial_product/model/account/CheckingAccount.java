@@ -2,6 +2,8 @@ package com.example.financial_products_management.domain.financial_product.model
 
 import com.example.financial_products_management.domain.customer.Customer;
 import com.example.financial_products_management.domain.financial_product.model.FinancialProduct;
+import com.example.financial_products_management.domain.shared.Depositable;
+import com.example.financial_products_management.domain.shared.Withdrawable;
 import com.example.financial_products_management.domain.shared.OperationType;
 import com.example.financial_products_management.exception.InsufficientFundsException;
 import java.time.LocalDate;
@@ -10,11 +12,9 @@ import java.time.LocalDate;
  * Representa una cuenta corriente.
  * Incluye valor de sobregiro, fecha de la última operación, valor de la última operación y tipo de operación.
  * Permite sobregiro cuando el monto a retirar supera al saldo actual.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
+ * Implementa las interfaces Depositable y Withdrawable para operaciones bancarias completas.
  */
-public class CheckingAccount extends FinancialProduct {
+public class CheckingAccount extends FinancialProduct implements Depositable, Withdrawable {
     private final double overdraftLimit;
     private LocalDate lastOperationDate;
     private double lastOperationAmount;

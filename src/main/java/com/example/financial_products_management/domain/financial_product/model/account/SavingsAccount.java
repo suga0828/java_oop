@@ -2,6 +2,8 @@ package com.example.financial_products_management.domain.financial_product.model
 
 import com.example.financial_products_management.domain.customer.Customer;
 import com.example.financial_products_management.domain.financial_product.model.FinancialProduct;
+import com.example.financial_products_management.domain.shared.Depositable;
+import com.example.financial_products_management.domain.shared.Withdrawable;
 import com.example.financial_products_management.exception.InsufficientFundsException;
 import java.time.LocalDate;
 
@@ -9,8 +11,9 @@ import java.time.LocalDate;
  * Representa una cuenta de ahorro.
  * Incluye valor acumulado por intereses, fecha del último depósito y valor del último depósito.
  * Calcula interés del 3% sobre el saldo en cada depósito.
+ * Implementa las interfaces Depositable y Withdrawable para operaciones bancarias completas.
  */
-public class SavingsAccount extends FinancialProduct {
+public class SavingsAccount extends FinancialProduct implements Depositable, Withdrawable {
     private double accumulatedInterest;
     private LocalDate lastDepositDate;
     private double lastDepositAmount;

@@ -3,9 +3,6 @@ package com.example.financial_products_management.exception;
 /**
  * Excepción personalizada para casos de fondos insuficientes.
  * Maneja internamente los mensajes de error según el contexto.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
  */
 public class InsufficientFundsException extends Exception {
     

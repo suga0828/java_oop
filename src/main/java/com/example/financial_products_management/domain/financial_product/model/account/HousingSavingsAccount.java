@@ -2,19 +2,18 @@ package com.example.financial_products_management.domain.financial_product.model
 
 import com.example.financial_products_management.domain.customer.Customer;
 import com.example.financial_products_management.domain.financial_product.model.FinancialProduct;
+import com.example.financial_products_management.domain.shared.Depositable;
 import com.example.financial_products_management.domain.shared.HousingClassification;
-import com.example.financial_products_management.exception.InsufficientFundsException;
 import java.time.LocalDate;
 
 /**
  * Representa una cuenta de ahorro programado para vivienda.
  * Incluye valor total de la vivienda, clasificación comercial, fecha y valor del último pago.
  * Valida que el valor total pagado no supere el valor total de la vivienda.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
+ * Esta cuenta solo permite depósitos, no retiros.
+ * Implementa únicamente la interfaz Depositable, ya que no permite operaciones de retiro.
  */
-public class HousingSavingsAccount extends FinancialProduct {
+public class HousingSavingsAccount extends FinancialProduct implements Depositable {
     private final double totalHousingValue;
     private final HousingClassification classification;
     private LocalDate lastPaymentDate;
@@ -119,26 +118,6 @@ public class HousingSavingsAccount extends FinancialProduct {
                 getBalance(), totalPaid, totalHousingValue);
     }
 
-    /**
-     * Realiza una operación de retiro.
-     * En cuentas de ahorro programado para vivienda, los retiros están restringidos.
-     *
-     * @param amount Monto a retirar
-     * @return Mensaje resultado de la operación
-     */
-    @Override
-    public String withdraw(double amount) throws IllegalArgumentException, InsufficientFundsException {
-        if (amount <= 0) {
-            throw new IllegalArgumentException("El monto a retirar debe ser mayor a cero");
-        }
-
-        if (amount > getBalance()) {
-            throw new InsufficientFundsException();
-        }
-
-        setBalance(getBalance() - amount);
-        return String.format("Retiro exitoso. Nuevo saldo: $%.2f", getBalance());
-    }
 
     @Override
     public String toString() {

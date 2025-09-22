@@ -2,6 +2,8 @@ package com.example.financial_products_management.domain.financial_product.model
 
 import com.example.financial_products_management.domain.customer.Customer;
 import com.example.financial_products_management.domain.financial_product.model.FinancialProduct;
+import com.example.financial_products_management.domain.shared.Depositable;
+import com.example.financial_products_management.domain.shared.Withdrawable;
 import com.example.financial_products_management.exception.InsufficientFundsException;
 import java.time.LocalDate;
 
@@ -9,11 +11,9 @@ import java.time.LocalDate;
  * Representa una cuenta especial para pago de salario.
  * Incluye valor pagado como salario, fecha del último retiro y valor del último retiro.
  * Los retiros no deben superar al valor pagado como salario.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
+ * Implementa las interfaces Depositable y Withdrawable para operaciones bancarias completas.
  */
-public class SalaryAccount extends FinancialProduct {
+public class SalaryAccount extends FinancialProduct implements Depositable, Withdrawable {
     private double salaryAmount;
     private LocalDate lastWithdrawalDate;
     private double lastWithdrawalAmount;

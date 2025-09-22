@@ -3,9 +3,6 @@ package com.example.financial_products_management.domain.customer;
 /**
  * Representa los datos del titular de un producto financiero.
  * Incluye información de identificación, nombres, apellidos y teléfono.
- *
- * @author 200582 Alexander Sandoval
- * @since 2025-09-20
  */
 public class Customer {
     private final String identification;
