@@ -17,6 +17,8 @@ Sistema para la gestión de productos financieros desarrollado en Java siguiendo
 - **Excepciones personalizadas** con manejo inteligente de mensajes
 - **Restricción de un producto por cliente** para simplificar el modelo de negocio
 - **Separación de responsabilidades** en capas bien definidas
+- **Interface Segregation Principle (ISP)** - Interfaces `Depositable` y `Withdrawable` segregadas
+- **Flexibilidad de operaciones** - Cuentas implementan solo las interfaces que necesitan
 
 ## Tipos de Productos Financieros
 
@@ -39,7 +41,7 @@ Sistema para la gestión de productos financieros desarrollado en Java siguiendo
 - **Características**: Valor total de la vivienda, clasificación comercial (VIS, VIP, VIS Renovación, No VIS), fecha del último pago y valor del último pago
 - **Operaciones**:
   - **Depósito**: Valida si el valor total pagado supera el valor total de la vivienda
-  - **Retiro**: Operación restringida con validación de saldo
+  - **Retiro**: ❌ **NO PERMITIDO** - Esta cuenta solo acepta depósitos (implementa únicamente Depositable)
 
 ### 4. Cuenta Especial para Pago de Salario
 
@@ -53,20 +55,25 @@ Sistema para la gestión de productos financieros desarrollado en Java siguiendo
 ```mermaid
 classDiagram
     %% Paquetes y notas
-    note for FinancialProduct "Producto Financiero (abstracto)"
+    note for FinancialProduct "Producto Financiero (concreto)"
     note for SavingsAccount "Cuenta de Ahorro"
     note for CheckingAccount "Cuenta Corriente"
-    note for HousingSavingsAccount "Cuenta Ahorro Vivienda"
+    note for HousingSavingsAccount "Cuenta Ahorro Vivienda (solo depósitos)"
     note for SalaryAccount "Cuenta Especial Salario"
     note for Customer "Cliente/Titular"
     note for FinancialCompany "Servicio de Negocio"
     note for ProductRepository "Repositorio de Datos"
-    note for BankingOperations "Interfaz de Operaciones"
+    note for Depositable "Interfaz de Depósitos"
+    note for Withdrawable "Interfaz de Retiros"
 
-    %% Interfaces
-    class BankingOperations {
+    %% Interfaces Segregadas (ISP)
+    class Depositable {
         <<interface>>
         +deposit(amount : double) : String
+    }
+
+    class Withdrawable {
+        <<interface>>
         +withdraw(amount : double) : String
     }
 
@@ -82,7 +89,6 @@ classDiagram
 
     %% Entidades del Dominio
     class FinancialProduct {
-        <<abstract>>
         -productNumber : String
         -openingDate : LocalDate
         -customer : Customer
@@ -93,9 +99,7 @@ classDiagram
         +getCustomer() : Customer
         +getBalance() : double
         #setBalance(balance : double) : void
-        +getProductType() : String*
-        +deposit(amount : double) : String*
-        +withdraw(amount : double) : String*
+        +getProductType() : String
         +toString() : String
     }
 
@@ -159,7 +163,6 @@ classDiagram
         +getTotalPaid() : double
         +getProductType() : String
         +deposit(amount : double) : String
-        +withdraw(amount : double) : String
         +toString() : String
     }
 
@@ -267,7 +270,15 @@ classDiagram
     FinancialProduct <|-- HousingSavingsAccount : extends
     FinancialProduct <|-- SalaryAccount : extends
     ProductRepository <|.. FinancialCompanyRepository : implements
-    BankingOperations <|.. FinancialProduct : implements
+    
+    %% Implementación de Interfaces Segregadas (ISP)
+    Depositable <|.. SavingsAccount : implements
+    Withdrawable <|.. SavingsAccount : implements
+    Depositable <|.. CheckingAccount : implements
+    Withdrawable <|.. CheckingAccount : implements
+    Depositable <|.. HousingSavingsAccount : implements
+    Depositable <|.. SalaryAccount : implements
+    Withdrawable <|.. SalaryAccount : implements
 
     %% Relaciones de Composición/Agregación
     FinancialProduct --> Customer : has
@@ -297,7 +308,7 @@ java_oop/
 │   │   │   └── FinancialCompany.java         # Servicio Financiero
 │   │   ├── financial_product/                # Agregado Producto Financiero
 │   │   │   └── model/
-│   │   │       ├── FinancialProduct.java     # Clase abstracta base
+│   │   │       ├── FinancialProduct.java     # Clase concreta base
 │   │   │       └── account/                  # Implementaciones de cuentas
 │   │   │           ├── CheckingAccount.java      # Cuenta Corriente
 │   │   │           ├── HousingSavingsAccount.java # Cuenta Ahorro Vivienda
@@ -307,7 +318,8 @@ java_oop/
 │   │   │   ├── ProductRepository.java        # Interfaz de Repositorio
 │   │   │   └── FinancialCompanyRepository.java # Implementación
 │   │   └── shared/                           # Conceptos Compartidos del Dominio
-│   │       ├── BankingOperations.java        # Interfaz de Operaciones
+│   │       ├── Depositable.java              # Interfaz de Depósitos (ISP)
+│   │       ├── Withdrawable.java             # Interfaz de Retiros (ISP)
 │   │       ├── HousingClassification.java    # Enum Clasificación Vivienda
 │   │       └── OperationType.java            # Enum Tipos de Operación
 │   ├── exception/                            # Excepciones Personalizadas
