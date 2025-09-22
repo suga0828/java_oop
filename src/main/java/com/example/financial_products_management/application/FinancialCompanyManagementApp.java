@@ -93,7 +93,6 @@ public class FinancialCompanyManagementApp {
         try {
             log("=== OPERACIONES INICIALES ===\n");
 
-            try {
             // Savings Account operations
             log("--- Operaciones en Cuenta de Ahorro ---");
             FinancialProduct savings = financialCompany.consultByProductNumber("001");
@@ -124,10 +123,23 @@ public class FinancialCompanyManagementApp {
             }
             System.out.println("Estado final: " + financialCompany.consultByProductNumber("002") + "\n");
 
-        } catch (Exception e) {
-            System.err.println("Error en demostración: " + e.getMessage());
-        }
+            // Housing Savings Account operations
+            log("--- Operaciones en Cuenta de Ahorro Vivienda ---");
+            FinancialProduct housing = financialCompany.consultByProductNumber("003");
+            System.out.println("Estado inicial: " + housing);
 
+            // Deposit in Housing Savings Account
+            String result4 = financialCompany.performDeposit("003", 5000000.0);
+            System.out.println("Depósito de $5,000,000: " + result4);
+            System.out.println("Estado actual: " + financialCompany.consultByProductNumber("003"));
+
+            // Withdrawal from Housing Savings Account
+            try {
+                financialCompany.performWithdrawal("003", 1000000.0);
+            } catch (UnsupportedOperationException e) {
+                System.out.println("Intento de retiro en Cuenta de Ahorro Vivienda: " + e.getMessage());
+            }
+            System.out.println("Estado final: " + financialCompany.consultByProductNumber("003") + "\n");
         } catch (Exception e) {
             System.err.println("Error en la demostración: " + e.getMessage());
         }
@@ -253,6 +265,8 @@ public class FinancialCompanyManagementApp {
             System.err.println("Producto no encontrado: " + e.getMessage());
         } catch (InsufficientFundsException e) {
             System.err.println("Fondos insuficientes: " + e.getMessage());
+        } catch (UnsupportedOperationException e) {
+            System.err.println("Operación no soportada: " + e.getMessage());
         } catch (IllegalArgumentException e) {
             System.err.println("Datos inválidos: " + e.getMessage());
         } catch (Exception e) {
